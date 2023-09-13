@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/style.css">
+    <title>Discover</title>
+    <style>
+        /* Additional styles for the Discover page */
+        .train-your-mind-section {
+            background-color: #444;
+            padding: 20px;
+            color: white;
+        }
+
+        .train-your-mind-section h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h3 class="heading">Video Gallery</h3>
+        <nav>
+            <ul class="nav-list">
+                <li class="nav-item"><a href="index.html">Home</a></li>
+                <li class="nav-item"><a href="favorites.html">Favorites</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <!-- Full-width section with an image -->
+    <div class="full-width-section">
+        <img src="assets/background.jpg" alt="Background Image">
+    </div>
+
+    <!-- New section with the title "Featured Videos" -->
+    <div class="featured-section">
+        <h2 class="section-title">Featured Videos</h2>
+        <div class="featured-videos">
+             <!-- Video 1 -->
+            <div class="featured-vid">
+                <video src="videos/video1.mp4" controls muted></video>
+                <h3 class="title">Featured Video 1</h3>
+                <button class="save-button" onclick="saveVideo('videos/video1.mp4', 'Featured Video 1')">Save</button>
+            </div>
+
+            <!-- Video 2 -->
+            <div class="featured-vid">
+                <video src="videos/video2.mp4" controls muted></video>
+                <h3 class="title">Featured Video 2</h3>
+                <button class="save-button" onclick="saveVideo('videos/video2.mp4', 'Featured Video 2')">Save</button>
+            </div>
+
+            <!-- Video 3 -->
+            <div class="featured-vid">
+                <video src="videos/video3.mp4" controls muted></video>
+                <h3 class="title">Featured Video 3</h3>
+                <button class="save-button" onclick="saveVideo('videos/video3.mp4', 'Featured Video 3')">Save</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Section with the title "Train Your Mind" -->
+    <div class="train-your-mind-section">
+        <h2 class="section-title">Train Your Mind</h2>
+        <!-- Add content related to training your mind here -->
+    </div>
+
+    <div class="container">
+        <div class="main-video">
+            <video id="mainVideo" controls muted></video>
+            <h3 class="title">01. Video Title Goes Here</h3>
+        </div>
+        <div class="video-list">
+            <div class="vid">
+                <video src="videos/video1.mp4" controls muted onclick="playVideo('videos/video4.mp4')"></video>
+                <h3 class="title">02. Video Title Goes Here</h3>
+                <button class="save-button" onclick="saveVideo('videos/video4.mp4', '02. Video Title Goes Here')">Save</button>
+            </div>
+            <div class="vid">
+                <video src="videos/video5.mp4" controls muted onclick="playVideo('videos/video5.mp4')"></video>
+                <h3 class="title">03. Video Title Goes Here</h3>
+                <button class="save-button" onclick="saveVideo('videos/video5.mp4', '03. Video Title Goes Here')">Save</button>
+            </div>
+            <div class="vid">
+                <video src="videos/video1.mp4" controls muted onclick="playVideo('videos/video4.mp4')"></video>
+                <h3 class="title">02. Video Title Goes Here</h3>
+                <button class="save-button" onclick="saveVideo('videos/video4.mp4', '02. Video Title Goes Here')">Save</button>
+            </div>
+            <div class="vid">
+                <video src="videos/video1.mp4" controls muted onclick="playVideo('videos/video4.mp4')"></video>
+                <h3 class="title">02. Video Title Goes Here</h3>
+                <button class="save-button" onclick="saveVideo('videos/video4.mp4', '02. Video Title Goes Here')">Save</button>
+            </div>
+            <div class="vid">
+                <video src="videos/video1.mp4" controls muted onclick="playVideo('videos/video4.mp4')"></video>
+                <h3 class="title">02. Video Title Goes Here</h3>
+                <button class="save-button" onclick="saveVideo('videos/video4.mp4', '02. Video Title Goes Here')">Save</button>
+            </div>
+            <div class="vid">
+                <video src="videos/video1.mp4" controls muted onclick="playVideo('videos/video4.mp4')"></video>
+                <h3 class="title">02. Video Title Goes Here</h3>
+                <button class="save-button" onclick="saveVideo('videos/video4.mp4', '02. Video Title Goes Here')">Save</button>
+            </div>
+            <div class="vid">
+                <video src="videos/video1.mp4" controls muted onclick="playVideo('videos/video4.mp4')"></video>
+                <h3 class="title">02. Video Title Goes Here</h3>
+                <button class="save-button" onclick="saveVideo('videos/video4.mp4', '02. Video Title Goes Here')">Save</button>
+            </div>
+            <div class="vid">
+                <video src="videos/video1.mp4" controls muted onclick="playVideo('videos/video4.mp4')"></video>
+                <h3 class="title">02. Video Title Goes Here</h3>
+                <button class="save-button" onclick="saveVideo('videos/video4.mp4', '02. Video Title Goes Here')">Save</button>
+            </div>
+            <div class="vid">
+                <video src="videos/video1.mp4" controls muted onclick="playVideo('videos/video4.mp4')"></video>
+                <h3 class="title">02. Video Title Goes Here</h3>
+                <button class="save-button" onclick="saveVideo('videos/video4.mp4', '02. Video Title Goes Here')">Save</button>
+            </div>
+            <!-- Add more videos as needed -->
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+    <script>
+        // Retrieve the saved videos array from localStorage (if it exists)
+        let savedVideos = JSON.parse(localStorage.getItem('savedVideos')) || [];
+
+        // Function to save a video
+        function saveVideo(videoSrc, videoTitle) {
+            // Add the video information to the savedVideos array
+            savedVideos.push({ src: videoSrc, title: videoTitle });
+            // Store the updated savedVideos array in localStorage
+            localStorage.setItem('savedVideos', JSON.stringify(savedVideos));
+        }
+
+        // Function to play a video on the main video screen
+        function playVideo(videoSrc) {
+            const mainVideo = document.getElementById('mainVideo');
+            mainVideo.src = videoSrc;
+            mainVideo.play();
+        }
+    </script>
+</body>
+</html>
