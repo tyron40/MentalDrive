@@ -53,6 +53,7 @@
         }
         
         .featured-vid {
+            background: rgb(246, 242, 242);
             width: calc(33.33% - 10px);
             text-align: center;
             border-radius: 5px;
@@ -61,9 +62,9 @@
             border: 1px solid rgba(0, 0, 0, 0.1);
         }
         
-        .featured-vid video {
+        .featured-vid iframe {
             width: 100%;
-            height: auto;
+            height: 250px;
             border-radius: 5px;
         }
         
@@ -77,6 +78,12 @@
             padding: 5px 5%;
         }
         
+        .main-video-container {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+        }
+        
         .container .main-video {
             background: #fff;
             border-radius: 5px;
@@ -85,9 +92,9 @@
             margin: 0 auto;
         }
         
-        .container .main-video video {
+        .container .main-video iframe {
             width: 100%;
-            height: auto;
+            height: 450px;
             border-radius: 5px;
         }
         
@@ -98,12 +105,24 @@
             padding-bottom: 15px;
         }
         
+        .ad-image {
+            width: 100%;
+            margin-top: 20px;
+            text-align: center;
+        }
+        
+        .ad-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+        
         .video-list {
             background: #fff;
             color: black;
             border-radius: 5px;
             height: auto;
-            max-height: 600px;
+            max-height: 1200px;
             width: 100%;
             overflow-y: scroll;
         }
@@ -122,10 +141,11 @@
             border-radius: 50px;
         }
         
-        .video-list .vid video {
+        .video-list .vid iframe {
             width: 100%;
-            height: auto;
+            height: 200px;
             border-radius: 5px;
+            pointer-events: none;
         }
         
         .video-list .vid {
@@ -206,24 +226,24 @@
         <h2 class="section-title">Featured Videos</h2>
         <div class="featured-videos">
             <!-- Video 1 -->
-            <div class="featured-vid">
-                <video src="videos/video1.mp4" controls muted></video>
+            <div class="featured-vid" onclick="playVideo('https://www.youtube.com/embed/ZXsQAXx_ao0?autoplay=1')">
+                <iframe src="https://www.youtube.com/embed/ZXsQAXx_ao0" frameborder="0" allowfullscreen></iframe>
                 <h3 class="title">Featured Video 1</h3>
-                <button class="save-button" onclick="saveVideo('videos/video1.mp4', 'Featured Video 1')">Save</button>
+                <button class="save-button" onclick="event.stopPropagation(); saveVideo('https://www.youtube.com/embed/ZXsQAXx_ao0', 'Featured Video 1')">Save</button>
             </div>
 
             <!-- Video 2 -->
-            <div class="featured-vid">
-                <video src="videos/video2.mp4" controls muted></video>
+            <div class="featured-vid" onclick="playVideo('https://www.youtube.com/embed/d6wRkzCW5qI?autoplay=1')">
+                <iframe src="https://www.youtube.com/embed/d6wRkzCW5qI" frameborder="0" allowfullscreen></iframe>
                 <h3 class="title">Featured Video 2</h3>
-                <button class="save-button" onclick="saveVideo('videos/video2.mp4', 'Featured Video 2')">Save</button>
+                <button class="save-button" onclick="event.stopPropagation(); saveVideo('https://www.youtube.com/embed/d6wRkzCW5qI', 'Featured Video 2')">Save</button>
             </div>
 
             <!-- Video 3 -->
-            <div class="featured-vid">
-                <video src="videos/video3.mp4" controls muted></video>
+            <div class="featured-vid" onclick="playVideo('https://www.youtube.com/embed/2Lz0VOltZKA?autoplay=1')">
+                <iframe src="https://www.youtube.com/embed/2Lz0VOltZKA" frameborder="0" allowfullscreen></iframe>
                 <h3 class="title">Featured Video 3</h3>
-                <button class="save-button" onclick="saveVideo('videos/video3.mp4', 'Featured Video 3')">Save</button>
+                <button class="save-button" onclick="event.stopPropagation(); saveVideo('https://www.youtube.com/embed/2Lz0VOltZKA', 'Featured Video 3')">Save</button>
             </div>
         </div>
     </div>
@@ -235,57 +255,61 @@
     </div>
 
     <div class="container">
-        <div class="main-video">
-            <video id="mainVideo" controls muted></video>
-            <h3 class="title">01. Video Title Goes Here</h3>
+        <div class="main-video-container">
+            <div class="main-video">
+                <iframe id="mainVideo" frameborder="0" allowfullscreen></iframe>
+                <h3 class="title">01. Video Title Goes Here</h3>
+            </div>
+            <div class="ad-image">
+                <img src="assets/motivational.jpg" alt="Motivational Image">
+            </div>
         </div>
         <div class="video-list">
-            <div class="vid">
-                <video src="videos/video1.mp4" controls muted onclick="playVideo('videos/video4.mp4')"></video>
-                <h3 class="title">02. Video Title Goes Here</h3>
-                <button class="save-button" onclick="saveVideo('videos/video4.mp4', '02. Video Title Goes Here')">Save</button>
+            <div class="vid" onclick="playVideo('https://www.youtube.com/embed/ZXsQAXx_ao0?autoplay=1')">
+                <iframe src="https://www.youtube.com/embed/ZXsQAXx_ao0" frameborder="0" allowfullscreen></iframe>
+                <h3 class="title">02. Believe In Yourself</h3>
+                <button class="save-button" onclick="event.stopPropagation(); saveVideo('https://www.youtube.com/embed/ZXsQAXx_ao0', 'Believe In Yourself')">Save</button>
             </div>
-            <div class="vid">
-                <video src="videos/video5.mp4" controls muted onclick="playVideo('videos/video5.mp4')"></video>
-                <h3 class="title">03. Video Title Goes Here</h3>
-                <button class="save-button" onclick="saveVideo('videos/video5.mp4', '03. Video Title Goes Here')">Save</button>
+            <div class="vid" onclick="playVideo('https://www.youtube.com/embed/d6wRkzCW5qI?autoplay=1')">
+                <iframe src="https://www.youtube.com/embed/d6wRkzCW5qI" frameborder="0" allowfullscreen></iframe>
+                <h3 class="title">03. How Bad Do You Want It</h3>
+                <button class="save-button" onclick="event.stopPropagation(); saveVideo('https://www.youtube.com/embed/d6wRkzCW5qI', 'How Bad Do You Want It')">Save</button>
             </div>
-            <div class="vid">
-                <video src="videos/video1.mp4" controls muted onclick="playVideo('videos/video4.mp4')"></video>
-                <h3 class="title">02. Video Title Goes Here</h3>
-                <button class="save-button" onclick="saveVideo('videos/video4.mp4', '02. Video Title Goes Here')">Save</button>
+            <div class="vid" onclick="playVideo('https://www.youtube.com/embed/ZXsQAXx_ao0?autoplay=1')">
+                <iframe src="https://www.youtube.com/embed/ZXsQAXx_ao0" frameborder="0" allowfullscreen></iframe>
+                <h3 class="title">04. You Owe You</h3>
+                <button class="save-button" onclick="event.stopPropagation(); saveVideo('https://www.youtube.com/embed/ZXsQAXx_ao0', 'You Owe You')">Save</button>
             </div>
-            <div class="vid">
-                <video src="videos/video1.mp4" controls muted onclick="playVideo('videos/video4.mp4')"></video>
-                <h3 class="title">02. Video Title Goes Here</h3>
-                <button class="save-button" onclick="saveVideo('videos/video4.mp4', '02. Video Title Goes Here')">Save</button>
+            <div class="vid" onclick="playVideo('https://www.youtube.com/embed/2Lz0VOltZKA?autoplay=1')">
+                <iframe src="https://www.youtube.com/embed/2Lz0VOltZKA" frameborder="0" allowfullscreen></iframe>
+                <h3 class="title">05. Stop Wasting Time</h3>
+                <button class="save-button" onclick="event.stopPropagation(); saveVideo('https://www.youtube.com/embed/2Lz0VOltZKA', 'Stop Wasting Time')">Save</button>
             </div>
-            <div class="vid">
-                <video src="videos/video1.mp4" controls muted onclick="playVideo('videos/video4.mp4')"></video>
-                <h3 class="title">02. Video Title Goes Here</h3>
-                <button class="save-button" onclick="saveVideo('videos/video4.mp4', '02. Video Title Goes Here')">Save</button>
+            <div class="vid" onclick="playVideo('https://www.youtube.com/embed/ZXsQAXx_ao0?autoplay=1')">
+                <iframe src="https://www.youtube.com/embed/ZXsQAXx_ao0" frameborder="0" allowfullscreen></iframe>
+                <h3 class="title">06. Execute</h3>
+                <button class="save-button" onclick="event.stopPropagation(); saveVideo('https://www.youtube.com/embed/ZXsQAXx_ao0', 'Execute')">Save</button>
             </div>
-            <div class="vid">
-                <video src="videos/video1.mp4" controls muted onclick="playVideo('videos/video4.mp4')"></video>
-                <h3 class="title">02. Video Title Goes Here</h3>
-                <button class="save-button" onclick="saveVideo('videos/video4.mp4', '02. Video Title Goes Here')">Save</button>
+            <div class="vid" onclick="playVideo('https://www.youtube.com/embed/d6wRkzCW5qI?autoplay=1')">
+                <iframe src="https://www.youtube.com/embed/d6wRkzCW5qI" frameborder="0" allowfullscreen></iframe>
+                <h3 class="title">07. Greatness Is Upon You</h3>
+                <button class="save-button" onclick="event.stopPropagation(); saveVideo('https://www.youtube.com/embed/d6wRkzCW5qI', 'Greatness Is Upon You')">Save</button>
             </div>
-            <div class="vid">
-                <video src="videos/video1.mp4" controls muted onclick="playVideo('videos/video4.mp4')"></video>
-                <h3 class="title">02. Video Title Goes Here</h3>
-                <button class="save-button" onclick="saveVideo('videos/video4.mp4', '02. Video Title Goes Here')">Save</button>
+            <div class="vid" onclick="playVideo('https://www.youtube.com/embed/2Lz0VOltZKA?autoplay=1')">
+                <iframe src="https://www.youtube.com/embed/2Lz0VOltZKA" frameborder="0" allowfullscreen></iframe>
+                <h3 class="title">08. Rise And Grind</h3>
+                <button class="save-button" onclick="event.stopPropagation(); saveVideo('https://www.youtube.com/embed/2Lz0VOltZKA', 'Rise And Grind')">Save</button>
             </div>
-            <div class="vid">
-                <video src="videos/video1.mp4" controls muted onclick="playVideo('videos/video4.mp4')"></video>
-                <h3 class="title">02. Video Title Goes Here</h3>
-                <button class="save-button" onclick="saveVideo('videos/video4.mp4', '02. Video Title Goes Here')">Save</button>
+            <div class="vid" onclick="playVideo('https://www.youtube.com/embed/ZXsQAXx_ao0?autoplay=1')">
+                <iframe src="https://www.youtube.com/embed/ZXsQAXx_ao0" frameborder="0" allowfullscreen></iframe>
+                <h3 class="title">09. No More Excuses</h3>
+                <button class="save-button" onclick="event.stopPropagation(); saveVideo('https://www.youtube.com/embed/ZXsQAXx_ao0', 'No More Excuses')">Save</button>
             </div>
-            <div class="vid">
-                <video src="videos/video1.mp4" controls muted onclick="playVideo('videos/video4.mp4')"></video>
-                <h3 class="title">02. Video Title Goes Here</h3>
-                <button class="save-button" onclick="saveVideo('videos/video4.mp4', '02. Video Title Goes Here')">Save</button>
+            <div class="vid" onclick="playVideo('https://www.youtube.com/embed/d6wRkzCW5qI?autoplay=1')">
+                <iframe src="https://www.youtube.com/embed/d6wRkzCW5qI" frameborder="0" allowfullscreen></iframe>
+                <h3 class="title">10. The Secret To Success</h3>
+                <button class="save-button" onclick="event.stopPropagation(); saveVideo('https://www.youtube.com/embed/d6wRkzCW5qI', 'The Secret To Success')">Save</button>
             </div>
-            <!-- Add more videos as needed -->
         </div>
     </div>
 
@@ -309,7 +333,6 @@
         function playVideo(videoSrc) {
             const mainVideo = document.getElementById('mainVideo');
             mainVideo.src = videoSrc;
-            mainVideo.play();
         }
     </script>
 </body>
