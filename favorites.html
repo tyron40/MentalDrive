@@ -13,28 +13,27 @@
         .favorites-container {
             display: grid;
             grid-template-columns: 1fr 3fr;
-            gap: 20px;
-            padding: 20px;
+            gap: 1em;
+            padding: 2em;
         }
         
         .favorites-list {
             background: #fff;
             color: black;
-            border-radius: 5px;
+            border-radius: 0.3125em;
             overflow-y: scroll;
             max-height: 600px;
-            padding: 10px;
+            padding: 1em;
         }
         
         .favorites-list .favorite-vid {
             display: flex;
             align-items: center;
-            gap: 15px;
+            gap: 1em;
             background: #f7f7f7;
-            border-radius: 5px;
-            margin: 10px 0;
-            /* Updated to control vertical margin */
-            padding: 10px;
+            border-radius: 0.3125em;
+            margin: 0.625em 0;
+            padding: 1em;
             border: 1px solid rgba(0, 0, 0, 0.1);
             cursor: pointer;
         }
@@ -42,19 +41,29 @@
         .favorites-list .favorite-vid video {
             width: 150px;
             height: 100px;
-            border-radius: 5px;
+            border-radius: 0.3125em;
         }
         
         .main-video-container {
             background: #fff;
             color: #333;
-            border-radius: 5px;
-            padding: 10px;
+            border-radius: 0.3125em;
+            padding: 1em;
         }
         
         .main-video-container video {
             width: 100%;
-            border-radius: 5px;
+            border-radius: 0.3125em;
+        }
+        
+        @media (max-width: 768px) {
+            .favorites-container {
+                grid-template-columns: 1fr;
+            }
+            .favorites-list {
+                max-height: none;
+                overflow-y: visible;
+            }
         }
     </style>
 </head>
@@ -90,7 +99,7 @@
         function generateSavedVideoHTML(video, index) {
             return `
                 <div class="favorite-vid" onclick="playVideo(${index})">
-                    <video src="${video.src}" controls muted autoplay width="150" height="100"></video>
+                    <video src="${video.src}" controls muted width="150" height="100"></video>
                     <h3 class="title">${video.title}</h3>
                     <button class="delete-button" onclick="deleteVideo(${index})">Delete</button>
                 </div>
@@ -117,7 +126,7 @@
         function playVideo(index) {
             const mainVideoContainer = document.getElementById('main-video');
             mainVideoContainer.innerHTML = `
-                <video src="${savedVideos[index].src}" controls autoplay></video>
+                <video src="${savedVideos[index].src}" controls></video>
                 <h3 class="title">${savedVideos[index].title}</h3>
             `;
         }

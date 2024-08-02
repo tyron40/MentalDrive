@@ -20,6 +20,168 @@
             text-align: center;
             margin-bottom: 20px;
         }
+        
+        .full-width-section {
+            width: 100%;
+            margin: 0 auto;
+        }
+        
+        .full-width-section img {
+            width: 100%;
+            height: auto;
+        }
+        
+        .featured-section {
+            background: #444;
+            border-radius: 5px;
+            padding: 15px;
+            margin: 10px;
+        }
+        
+        .section-title {
+            font-size: 24px;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+        
+        .featured-videos {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: nowrap;
+            overflow-x: auto;
+        }
+        
+        .featured-vid {
+            width: calc(33.33% - 10px);
+            text-align: center;
+            border-radius: 5px;
+            margin-right: 10px;
+            padding: 10px;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+        }
+        
+        .featured-vid video {
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+        
+        .container {
+            background: rgb(26, 25, 25);
+            color: white;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 5px;
+            align-items: flex-start;
+            padding: 5px 5%;
+        }
+        
+        .container .main-video {
+            background: #fff;
+            border-radius: 5px;
+            padding: 10px;
+            width: 100%;
+            margin: 0 auto;
+        }
+        
+        .container .main-video video {
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+        
+        .container .main-video .title {
+            color: #333;
+            font-size: 23px;
+            padding-top: 15px;
+            padding-bottom: 15px;
+        }
+        
+        .video-list {
+            background: #fff;
+            color: black;
+            border-radius: 5px;
+            height: auto;
+            max-height: 600px;
+            width: 100%;
+            overflow-y: scroll;
+        }
+        
+        .video-list::-webkit-scrollbar {
+            width: 7px;
+        }
+        
+        .video-list::-webkit-scrollbar-track {
+            background: #ccc;
+            border-radius: 50px;
+        }
+        
+        .video-list::-webkit-scrollbar-thumb {
+            background: #666;
+            border-radius: 50px;
+        }
+        
+        .video-list .vid video {
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+        
+        .video-list .vid {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            background: #f7f7f7;
+            border-radius: 5px;
+            margin: 10px;
+            padding: 10px;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+        }
+        
+        .save-button:hover {
+            background-color: #ffcc00;
+            color: #000;
+        }
+        
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .nav-list {
+                flex-direction: column;
+                width: 100%;
+            }
+            .nav-item {
+                margin: 0.625em 0;
+            }
+            .home-container {
+                padding: 10% 5%;
+            }
+            .quote {
+                font-size: 1.8em;
+            }
+            .enter-button {
+                width: 100%;
+                text-align: center;
+            }
+            .featured-videos {
+                flex-direction: column;
+            }
+            .featured-vid {
+                width: 100%;
+                margin-bottom: 10px;
+            }
+            .container {
+                grid-template-columns: 1fr;
+            }
+            .video-list {
+                max-height: none;
+                overflow-y: visible;
+            }
+        }
     </style>
 </head>
 
