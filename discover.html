@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,18 +9,20 @@
     <title>Discover</title>
     <style>
         /* Additional styles for the Discover page */
+        
         .train-your-mind-section {
             background-color: #444;
             padding: 20px;
             color: white;
         }
-
+        
         .train-your-mind-section h2 {
             text-align: center;
             margin-bottom: 20px;
         }
     </style>
 </head>
+
 <body>
     <div class="header">
         <h3 class="heading">Video Gallery</h3>
@@ -40,7 +43,7 @@
     <div class="featured-section">
         <h2 class="section-title">Featured Videos</h2>
         <div class="featured-videos">
-             <!-- Video 1 -->
+            <!-- Video 1 -->
             <div class="featured-vid">
                 <video src="videos/video1.mp4" controls muted></video>
                 <h3 class="title">Featured Video 1</h3>
@@ -132,7 +135,10 @@
         // Function to save a video
         function saveVideo(videoSrc, videoTitle) {
             // Add the video information to the savedVideos array
-            savedVideos.push({ src: videoSrc, title: videoTitle });
+            savedVideos.push({
+                src: videoSrc,
+                title: videoTitle
+            });
             // Store the updated savedVideos array in localStorage
             localStorage.setItem('savedVideos', JSON.stringify(savedVideos));
         }
@@ -145,4 +151,5 @@
         }
     </script>
 </body>
+
 </html>
