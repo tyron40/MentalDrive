@@ -8,7 +8,57 @@
     <link rel="stylesheet" href="/style.css">
     <title>Favorites</title>
     <style>
-        /* Additional styles for the Favorites page */
+        /* Reset styles for all elements */
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        /* Global styles */
+        
+        body {
+            background: #eee;
+            text-transform: capitalize;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-weight: normal;
+        }
+        /* Add styles for navigation tabs */
+        
+        .header {
+            background: #333;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .nav-list {
+            list-style: none;
+            padding: 0;
+            display: flex;
+        }
+        
+        .nav-item {
+            margin-right: 20px;
+        }
+        
+        .nav-item:last-child {
+            margin-right: 0;
+        }
+        
+        .nav-item a {
+            text-decoration: none;
+            color: #fff;
+            padding: 10px;
+            transition: color 0.3s;
+        }
+        
+        .nav-item a:hover {
+            color: #ffcc00;
+        }
         
         .favorites-container {
             display: grid;
