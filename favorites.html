@@ -22,8 +22,9 @@
             color: black;
             border-radius: 0.3125em;
             overflow-y: scroll;
-            max-height: 600px;
+            max-height: 800px;
             padding: 1em;
+            width: 400px;
         }
         
         .favorites-list .favorite-vid {
@@ -38,10 +39,25 @@
             cursor: pointer;
         }
         
-        .favorites-list .favorite-vid video {
-            width: 150px;
-            height: 100px;
+        .favorites-list .favorite-vid iframe {
+            width: 250px;
+            height: 150px;
             border-radius: 0.3125em;
+            pointer-events: none;
+        }
+        
+        .favorites-list .delete-button {
+            background: #ff0000;
+            color: #fff;
+            border: none;
+            border-radius: 0.3125em;
+            padding: 0.5em 1em;
+            cursor: pointer;
+        }
+        
+        .favorites-list .title {
+            font-size: 14px;
+            /* Smaller title size */
         }
         
         .main-video-container {
@@ -51,9 +67,12 @@
             padding: 1em;
         }
         
-        .main-video-container video {
-            width: 100%;
+        .main-video-container iframe {
+            width: 95%;
+            height: 400px;
             border-radius: 0.3125em;
+            margin-left: 3%;
+            /* Shifted to the right */
         }
         
         @media (max-width: 768px) {
@@ -63,6 +82,8 @@
             .favorites-list {
                 max-height: none;
                 overflow-y: visible;
+                width: 100%;
+                /* Full width on smaller screens */
             }
         }
     </style>
@@ -90,7 +111,6 @@
         </div>
     </div>
 
-    <script src="js/script.js"></script>
     <script>
         // Retrieve saved videos from localStorage
         const savedVideos = JSON.parse(localStorage.getItem('savedVideos')) || [];
@@ -98,10 +118,12 @@
         // Function to generate HTML for saved videos in the list
         function generateSavedVideoHTML(video, index) {
             return `
-                <div class="favorite-vid" onclick="playVideo(${index})">
-                    <video src="${video.src}" controls muted width="150" height="100"></video>
-                    <h3 class="title">${video.title}</h3>
-                    <button class="delete-button" onclick="deleteVideo(${index})">Delete</button>
+                <div class="favorite-vid" onclick="playVideo('${video.src}', '${video.title}')">
+                    <iframe src="${video.src}" frameborder="0" allowfullscreen></iframe>
+                    <div>
+                        <h3 class="title">${video.title}</h3>
+                        <button class="delete-button" onclick="event.stopPropagation(); deleteVideo(${index})">Delete</button>
+                    </div>
                 </div>
             `;
         }
@@ -123,11 +145,11 @@
         }
 
         // Function to play a video in the main video container
-        function playVideo(index) {
+        function playVideo(videoSrc, videoTitle) {
             const mainVideoContainer = document.getElementById('main-video');
             mainVideoContainer.innerHTML = `
-                <video src="${savedVideos[index].src}" controls></video>
-                <h3 class="title">${savedVideos[index].title}</h3>
+                <iframe src="${videoSrc}" frameborder="0" allowfullscreen autoplay></iframe>
+                <h3 class="title">${videoTitle}</h3>
             `;
         }
 
